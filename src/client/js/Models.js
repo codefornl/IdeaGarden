@@ -1,6 +1,11 @@
 var Model = (function(){
-
+    var detail = m.prop({});
+    var challenge = m.prop({});
+    var challenges = m.prop({});
+    var id = "";
     var token = m.prop({success: false});
+    var overview = m.prop({});
+
     //load token from session
     if(typeof(localStorage) !== "undefined") {
         try {
@@ -73,25 +78,24 @@ var Model = (function(){
         localStorage.setItem("token", "");
     }
 
-    var overview = m.prop({});
     function getOverview(){
+        id = m.route.param("id") || "577ba8ba4d325fad07cdc85e";
         m.request({
             method: "GET",
-            url: "/api/ideas",
+            url: "/api/challenge/" + id + "/ideas",
             config: xhrConfig
         }).then(validate).then(overview);
         return overview;
     }
 
     function getMyIdeas(){
+        console.log('getMyIdeas');
         m.request({
             method: "GET",
             url: "/api/ideas",
             config: xhrConfig
         }).then(validate).then(function(o){
             return o.filter(function(i){
-                console.log(i.owner._id);
-                console.log(token().id);
                 return i.owner._id === token().id;
             });
         }).then(overview);
@@ -143,9 +147,13 @@ var Model = (function(){
         }).then(callback);
     }
 
-    var detail = m.prop({});
-    var challenge = m.prop({});
-    var id = "";
+    function getChallenges(){
+        m.request({
+            method: "GET",
+            url: "/api/challenges"
+        }).then(validate).then(challenges);
+        return challenges;
+    }
 
     function getChallenge(){
         id = m.route.param("id") || "577ba8ba4d325fad07cdc85e";
@@ -220,7 +228,8 @@ var Model = (function(){
     }
 
     function getOpened(){
-        return (moment([2016, 6, 26]).diff(moment(),'days') >= 0);
+        //return (moment([2016, 6, 26]).diff(moment(),'days') >= 0);
+        return true;
     }
 
     return {
@@ -238,6 +247,7 @@ var Model = (function(){
         registerAccount:registerAccount,
         forgetPassword: forgetPassword,
 
+        getChallenges: getChallenges,
         getChallenge: getChallenge,
 
         getDetail: getDetail,

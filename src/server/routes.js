@@ -145,6 +145,13 @@ module.exports = (function(){
         });
     }
 
+    function getChallenges(req, res) {
+        database.getChallenges(function(data){
+            if(!data.success) return res.json({success: false, message: "challenge does not exist"});
+            res.json(data);
+        });
+    }
+
     function getChallenge(req, res) {
         database.getChallenge(req.params.id, function(data){
             if(!data.success) return res.json({success: false, message: "challenge does not exist"});
@@ -154,7 +161,7 @@ module.exports = (function(){
 
     function getIdeas(req, res) {
         authenticate.verify(req, function(auth){
-            database.getIdeas(req.ip, function(data){
+            database.getIdeas(req, function(data){
                 res.json({auth: auth.success, success: true, data: data});
             });
         }); //just do this to register ip
@@ -351,6 +358,7 @@ module.exports = (function(){
         updateUser: updateUser,
         forgetPassword: forgetPassword,
 
+        getChallenges: getChallenges,
         getChallenge: getChallenge,
 
         getIdeas: getIdeas,

@@ -7,15 +7,16 @@ var PlatformPage = {
            m("div", {class: "ui page"}, [
                m("div", {class: "ui grid"}, [
                    m("div", {class: "ui col-12"}, [
-                       m("div", {class: "ui card color"}, [
+                       m("div", {class: "ui card base"}, [
                            m("p", {class: "centerimage"},[
-                               m("h1", "crowdsourcing?"),
+                               m("h1", "crowdsourcing"),
                                m("div", {class: "stage"}, [
                                    m("p", [
-                                       "Het crowdsourcing platform Ideeënvijver is van iedereen. Daarom nodigen wij gemeenten en instanties van harte uit om ook gebruik te maken van dit platform. Als u intresse heeft om ook eens iets te doen met crowdsourcing, neem dan contact op met ",
-                                       m("a", {href: "mailto:info@ideeenvijver.nl"}, "info@ideeenvijver.nl"),
-                                       ". We denken graag met u mee."
+                                       "Ideeënvijver is een open source crowdsourcing platform ontwikkeld door code for NL. Dit platform is van iedereen."
                                    ]),
+                               ]),
+                               m("div",{class: "social"},[
+                                 m("a", {href: "mailto:ideeenvijver@codefor.nl"}, "ideeenvijver@codefor.nl")
                                ])
                            ])
                        ])

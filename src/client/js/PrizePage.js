@@ -1,13 +1,18 @@
 //=require Menu.js
 
 var PrizePage = {
-   view: function() {
+    controller: function(){
+        this.ideas = function(){
+            m.route("/ideas");
+        };
+    },
+   view: function(ctrl) {
        return m("div",[
            m.component(Menu),
            m("div", {class: "ui page"}, [
                m("div", {class: "ui grid"}, [
                    m("div", {class: "ui col-12"}, [
-                       m("div", {class: "ui card colorless header"}, [
+                       m("div", {class: "ui card base"}, [
                            m("p", {class: "centerimage"},[
                                m("h1", "Dankjewel voor jullie ideeën!"),
                                m("p", "Bedankt voor jullie enthousiasme en samenwerking. Er zijn maar liefst 94 ideeën ingediend en er is in totaal 3.408 keer gestemd! Op donderdag 28 juli is de jury samengekomen om de ideeën te beoordelen op de volgende aspecten: FUN-waarde, passen bij het DNA van Eindhoven (Design, Kennis en Techniek), Innovatief en duurzaam, haalbaarheid en uiteraard het aantal kudos dat door jullie is gegeven. De jury bestond uit vertegenwoordigers van woningbouwvereniging  Trudo, Design Academy, Architectuurcentrum  Eindhoven, EHV365 en de gemeente Eindhoven.")

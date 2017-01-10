@@ -61,6 +61,7 @@ var UserSchema =  new mongoose.Schema({
 
 var IdeaSchema = new mongoose.Schema({
     title: {type: String , unique: true},
+    challenge: {type: mongoose.Schema.Types.ObjectId, ref: 'Challenge', autopopulate: {select: 'title'}},
     owner: {type: mongoose.Schema.Types.ObjectId, ref: 'User', autopopulate: {select: 'name'}},
     summary: String,
     content: String,
@@ -155,7 +156,8 @@ IdeaSchema.methods.getPublic = function(){
         updated: this.updatedAt,
         created: this.createdAt,
         badge: this.badge,
-        position: this.position
+        position: this.position,
+        challenge: this.challenge
     };
 };
 
@@ -305,15 +307,17 @@ module.exports = (function(){
       });
     }
 
-    function getIdeas(requestIp, callback){
-        Idea.find({}).select('title summary upvotes downvotes additions owner updatedAt createdAt').exec(function(err, ideaDocList){
+    function getIdeas(request, callback){
+        var challenge = request.params.id;
+        console.log(challenge);
+        Idea.find({}).select('title summary upvotes downvotes additions owner challenge updatedAt createdAt').exec(function(err, ideaDocList){
             if(err || !ideaDocList){
                 console.log(err);
                 return callback({success: false});
             }
             ideaDocList = ideaDocList
                 .map(function(ideaDoc){
-                    return ideaDoc.getVotes(requestIp);
+                    return ideaDoc.getVotes(request.ip);
                 })
                 .sort(function(a,b){
                     var delta = b.votecount - a.votecount;
@@ -331,7 +335,7 @@ module.exports = (function(){
     }
 
     function getAllIdeas(callback){
-        Idea.find({}).select('title summary upvotes downvotes additions owner updatedAt createdAt').exec(function(err, ideaDocList){
+        Idea.find({}).select('title summary upvotes downvotes additions owner challenge updatedAt createdAt').exec(function(err, ideaDocList){
             if(err || !ideaDocList){
                 console.log(err);
                 return callback({success: false});
@@ -391,7 +395,7 @@ module.exports = (function(){
                 },
                 function(err, data){
                     if (err) return callback({success: false});
-                    getIdeas(vote.id, callback);
+                    getIdeas(vote, callback);
                 }
             );
 
@@ -410,7 +414,7 @@ module.exports = (function(){
                 },
                 function(err, data){
                     if (err) return callback({success: false});
-                    getIdeas(vote.id, callback);
+                    getIdeas(vote, callback);
                 }
             );
         } else {

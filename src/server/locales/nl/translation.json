@@ -1,4 +1,9 @@
 {
+  "home":{
+    "intro": "Is er ruimte voor jouw idee?",
+    "paragraph1": "Op deze website vindt je challenges die op zoek zijn naar invulling. Dit zijn bijvoorbeeld gebieden waarvoor we je vragen mee te denken over de indeling of sociale vraagstukken.",
+    "paragraph2": "Heb je een leuke idee of zoek je een gebied om je idee tot uitvoering te brengen. Doe dan mee! Je kunt jouw eigen idee blijven aanvullen, ideeën van anderen bekijken en stemmen op de ideeën die jou het meeste aanspreken."
+  },
     "button": {
         "submit": "opslaan",
         "login": "aanmelden",
@@ -31,7 +36,8 @@
         "login": "Aanmelden",
         "myideas": "Mijn Ideeën",
         "ideas": "Ideeën",
-        "challenge": "De Vraag",
+        "challenges": "Challenges",
+        "challenge": "Challenge",
         "explain": "Uitleg",
         "rules": "Regels",
         "contact":"Contact",

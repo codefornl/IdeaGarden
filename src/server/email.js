@@ -23,7 +23,7 @@ module.exports = (function(){
     var templateVars = {
       title: "Ideeënvijver",
       site: "https://www.ideeenvijver.nl",
-      mail: "info@ideeenvijver.nl",
+      mail: config.email.from,
       code: content
     };
     template.render(templateVars, function (err, results) {
@@ -34,8 +34,8 @@ module.exports = (function(){
       }
       transporter.sendMail({
         from: {
-          name: 'Frederique van Ideeënvijver',
-          address: config.email.auth.user
+          name: 'Ideeënvijver',
+          address: config.email.from
         },
         to: receiver,
         subject: subject,

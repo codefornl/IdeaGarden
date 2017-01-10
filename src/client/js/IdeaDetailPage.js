@@ -264,7 +264,6 @@ var DoAddition = {
                                     }),
                                     m.component(MediaInput, ctrl.mediaDataUrl)
                                 ]);
-
                             }
                         }(),
                         m("p", {class: "ui errorhelp"}, ctrl.error),
@@ -431,10 +430,7 @@ var DoAddition = {
 
                 //recursively slice array
                 function findUrl(inputArray){
-
-                    //console.log(inputArray);
                     var inputText = inputArray.pop();//
-                    //console.log(inputText);
                     //URLs starting with http://, https://, or ftp://
                     var pattern1 = /(\b(https?):\/\/[-A-Z0-9+&@#\/%?=~_|()!:,.;]*[-A-Z0-9+&@#\/%=~_|()])/gim;
                     //URLs starting with "www." (without // before it, or it'd re-link the ones done above).
@@ -462,13 +458,11 @@ var DoAddition = {
 
 
                     if(bestmatch.match.index === Infinity){
-                        //console.log("return");
                         inputArray.push(inputText);
                         return inputArray;
                     }
 
                     if(bestmatch.name === "http"){
-                        //console.log("normal link");
                         slices = slice(inputText, bestmatch.match, pattern1);
                         inputArray.push(slices.head);
                         inputArray.push(m("a", {class: "external-link", href: slices.mid, target: '_blank'}, slices.mid));
@@ -477,7 +471,6 @@ var DoAddition = {
                     }
 
                     if(bestmatch.name === "www"){
-                        //console.log("www link");
                         slices = slice(inputText, bestmatch.match, pattern2);
                         inputArray.push(slices.head);
                         inputArray.push(m("a", {class: "external-link", href: "http://" + slices.mid, target: '_blank'}, slices.mid));
@@ -486,7 +479,6 @@ var DoAddition = {
                     }
 
                     if(bestmatch.name === "email"){
-                        //console.log("email");
                         slices = slice(inputText, bestmatch.match, pattern3);
                         inputArray.push(slices.head);
                         inputArray.push(m("a", {class: "external-link", href: "mailto:" + slices.mid, target: '_blank'}, slices.mid));
@@ -495,7 +487,6 @@ var DoAddition = {
                     }
 
                     if(bestmatch.name === "linebreak") {
-                        //console.log("linebreak");
                         slices = slice(inputText, bestmatch.match, pattern4);
                         inputArray.push(slices.head);
                         inputArray.push(m("br"));

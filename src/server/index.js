@@ -68,26 +68,28 @@ app.get('/api', function (req, res) {
     res.json({message: 'Hello World!'});
 });
 
+app.get('/api/challenges', routes.getChallenges);
+app.get('/api/challenge/:id', routes.getChallenge); //get challenge data
+app.get('/api/challenge/:id/ideas', routes.getIdeas); //get all ideas
+app.get('/api/challenge/:id/idea/:id', routes.getIdea); //get specific idea
+
+app.get('/api/idea/:id/addition/:aid/vote/:operation', function (req, res) {}); //vote on an addition
+
+app.get('/api/idea/:id/vote/:operation', routes.postIdeaVote); //vote on an idea
+
 app.post('/api/login', routes.loginUser); //login
 app.post('/api/confirm', routes.confirmUser);
 app.post('/api/register', routes.registerUser);
 app.post('/api/update', routes.updateUser);
 app.post('/api/forgetpassword', routes.forgetPassword);
 
-app.get('/api/challenge/:id', routes.getChallenge); //get challenge data
-
-app.get('/api/ideas', routes.getIdeas); //get all ideas
-app.get('/api/idea/:id', routes.getIdea); //get specific idea
-
 app.post('/api/idea', routes.postIdea); //post new idea
 app.post('/api/updateidea', routes.updateIdea); //post new idea
-
-app.get('/api/idea/:id/vote/:operation', routes.postIdeaVote); //vote on an idea
 app.post('/api/idea/:id/addition/', routes.postIdeaAddition); //make an addition to an idea
 app.post('/api/idea/:id/addition/:aid/comment', routes.postIdeaComment); //comment on an addition
 
 //vote on an addition
-app.get('/api/idea/:id/addition/:aid/vote/:operation', function (req, res) {});
+
 
 //run server
 app.listen(config.port, function () {
