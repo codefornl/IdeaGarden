@@ -74,6 +74,7 @@ app.post('/api/register', routes.registerUser);
 app.post('/api/update', routes.updateUser);
 app.post('/api/forgetpassword', routes.forgetPassword);
 
+app.get('/api/challenges', routes.getChallenges);
 app.get('/api/challenge/:id', routes.getChallenge); //get challenge data
 
 app.get('/api/ideas', routes.getIdeas); //get all ideas

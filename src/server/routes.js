@@ -152,6 +152,13 @@ module.exports = (function(){
         });
     }
 
+    function getChallenges(req, res) {
+        database.getChallenges(function(data){
+            if(!data.success) return res.json({success: false, message: "no challenges"});
+            res.json(data);
+        });
+    }
+
     function getIdeas(req, res) {
         authenticate.verify(req, function(auth){
             database.getIdeas(req.ip, function(data){
@@ -351,6 +358,7 @@ module.exports = (function(){
         updateUser: updateUser,
         forgetPassword: forgetPassword,
 
+        getChallenges:getChallenges,
         getChallenge: getChallenge,
 
         getIdeas: getIdeas,
