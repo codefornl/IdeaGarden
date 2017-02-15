@@ -61,7 +61,7 @@ var PrizePage = {
 							   m("p",{},"Mathijs Dielissen, de bedenker van het winnende idee bleek een student Landscape Design te zijn aan de HAS Hogeschool in Den Bosch. Gemeente Eindhoven heeft hem na een kennismakingsgesprek direct een afstudeerplek aangeboden. Zo kreeg Mathijs de mogelijkheid om zijn eigen idee te toetsen aan de bestaande situatie en visie van de gemeente Eindhoven. Het idee wordt steeds concreter en wordt overal erg goed ontvangen! Momenteel zijn we op zoek naar een geschikte ruimte om de pop-up boxen te plaatsen en kijken hoe ze er precies uit komen te zien. Dit kan in de vorm van omgebouwde containers, maar misschien ook wel als omgebouwde Engelse telefooncellen. Daarnaast wordt er naar de financiering gekeken. Het idee Pop-up Promenade sluit goed aan bij de ambities van een ander project genaamd de Groene Corridor. De mogelijkheden voor een mooie koppeling loopt as we speak!"),
 							   m("img", {style: "width:100%;", src: "/static/presentation2.JPG"}),
 							   m("img", {style: "width:100%;", src: "/static/presentation3.JPG"}),
-							   m("p",{},"Er kan natuurlijk nog niks beloofd worden maar één ding is zeker: Dankzij het idee van de Pop-up Promenade zijn we een stap dichterbij de realisatie van een aantrekkelijker gebied tussen het centrum en Strijp S en we verwachten de eerste stappen dit jaar al te kunnen zetten!"),
+							   m("p",{},"Dankzij het idee van de Pop-up Promenade zijn we een stap dichterbij de realisatie van een aantrekkelijker gebied tussen het centrum en Strijp S en we verwachten de eerste stappen dit jaar al te kunnen zetten!"),
                            ])
                        ]),
 
