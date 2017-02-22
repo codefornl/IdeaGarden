@@ -20,7 +20,7 @@ var IdeaDetailPage = {
                     ]),
                     m("div", {class: "ui col-8"}, [
                         m.component(IdeaText, idea),
-                        m.component(DoAddition),
+                        //m.component(DoAddition),
                         m.component(AdditionOverview, idea.additions),
                     ]),
                     m.component(Footer)
@@ -298,7 +298,7 @@ var DoAddition = {
                 })(),
                 m.component(PostSection, addition),
                 m.component(CommentSection, addition.comments),
-                m.component(ReactionBar, addition._id),
+                //m.component(ReactionBar, addition._id),
             ]);
         }
     };

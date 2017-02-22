@@ -16,8 +16,8 @@ var VoteButtons = {
 
         if(ctrl.opened){
             return m("div", {class: "voteset"}, [
-                m("button", {value: "up", class: "ui vote up "+upvoted, onclick: ctrl.vote, title:"Stem +1"}, "▲"),
-                m("button", {value: "down", class: "ui vote down "+downvoted, onclick: ctrl.vote, title:"Stem -1"}, "▼"),
+                //m("button", {value: "up", class: "ui vote up "+upvoted, onclick: ctrl.vote, title:"Stem +1"}, "▲"),
+                //m("button", {value: "down", class: "ui vote down "+downvoted, onclick: ctrl.vote, title:"Stem -1"}, "▼"),
             ]);
         } else {
             return m("div", {class: "voteset"});

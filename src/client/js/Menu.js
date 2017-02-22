@@ -56,12 +56,12 @@ var Menu = {
                 m("a", {class: "ui menuelement option "+ctrl.fold, onclick: ctrl.explain}, i18next.t('menu.explain')),
                 m("a", {class: "ui menuelement option "+ctrl.fold, onclick: ctrl.prize}, i18next.t('menu.prize')),
                 m("a", {class: "ui menuelement option "+ctrl.fold, onclick: ctrl.platfrm}, i18next.t('menu.platfrm')),
-                (function(){
-                    if(ctrl.token().success) {
-                        return m("a", {class: "ui menuelement right "+ctrl.fold, onclick: ctrl.dashboardClick.bind(ctrl)}, i18next.t('menu.myideas')); //ctrl.token().email
-                    }
-                    return m("a", {class: "ui menuelement right "+ctrl.fold, onclick: ctrl.loginClick.bind(ctrl)}, i18next.t('menu.login'));
-                })()
+                //(function(){
+                //    if(ctrl.token().success) {
+                //        return m("a", {class: "ui menuelement right "+ctrl.fold, onclick: ctrl.dashboardClick.bind(ctrl)}, i18next.t('menu.myideas')); //ctrl.token().email
+                //    }
+                //    return m("a", {class: "ui menuelement right "+ctrl.fold, onclick: ctrl.loginClick.bind(ctrl)}, i18next.t('menu.login'));
+                //})()
                 ])
             ]);
         }
