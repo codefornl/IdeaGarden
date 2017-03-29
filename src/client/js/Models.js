@@ -221,7 +221,7 @@ var Model = (function(){
 
     function getOpened(){
         //return (moment([2016, 6, 26]).diff(moment(),'days') >= 0);
-        return true;
+        return false;
     }
 
     return {
