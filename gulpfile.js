@@ -91,13 +91,6 @@ gulp.task('static', function () {
         .pipe(gulp.dest(dirs.clientbuild + '/static'));
 });
 
-//automagically re-build and run
-gulp.task('develop', function () {
-    gulp.start('run');
-    gulp.watch(dirs.serversrc + '/**/*', ['server', 'run']);
-    gulp.watch(dirs.clientsrc + '/**/*', ['client']);
-});
-
 gulp.task('client', gulp.series(['js', 'i18next', 'less', 'html', 'static']));
 gulp.task('server', gulp.series(['copy-server', 'install-npm']));
 gulp.task('build', gulp.series(['client', 'server']));
@@ -115,6 +108,12 @@ gulp.task('run', function () {
         }
     });
     process.chdir(__dirname);
+});
+
+//automagically re-build and run
+gulp.task('develop', gulp.series('run'), function () {
+    gulp.watch(dirs.serversrc + '/**/*', ['server', 'run']);
+    gulp.watch(dirs.clientsrc + '/**/*', ['client']);
 });
 
 gulp.task('default', gulp.series(['run']));

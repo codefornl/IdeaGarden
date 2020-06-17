@@ -75,7 +75,7 @@ database.addChallenge({
             category: "image",
             content: {
               description: "Misschien kunnen we er zo'n fiets monorail van maken.",
-              src: "static/fish logo.jpg"
+              src: "static/Monorail_velocipedique.JPG"
             },
             comments: []
               },
