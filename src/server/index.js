@@ -4,16 +4,7 @@ var compress = require('compression');
 var i18next = require('i18next');
 var middleware = require('i18next-express-middleware');
 var Backend = require('i18next-node-fs-backend');
-var fs = require('fs');
 var routes = require('./routes');
-
-var config;
-if (!fs.existsSync(__dirname + '/./config.js')) {
-  console.log('Warning, no config.js present. Falling back to config.default.js');
-  config = require(__dirname + '/./config.default.js');
-} else {
-  config = require(__dirname + '/./config.js');
-}
 
 var env = process.env.NODE_ENV || 'development';
 
@@ -91,6 +82,7 @@ app.post('/api/idea/:id/addition/:aid/comment', routes.postIdeaComment); //comme
 app.get('/api/idea/:id/addition/:aid/vote/:operation', function (req, res) {});
 
 //run server
-app.listen(config.port, function () {
-    console.log('App listening on port ' + config.port);
+var port = process.env.port || 8080
+app.listen(port, function () {
+    console.log('App listening on port ' + port);
 });

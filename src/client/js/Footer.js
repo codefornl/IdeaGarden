@@ -11,7 +11,7 @@ var Footer = {
                     m("div",[
                         "Dit crowdsourcing platform is een initiatief van de gemeente Eindhoven, en is als pilot ontwikkeld door Code for NL.",
                         " Vragen? Neem contact op: ",
-                        m("a", {href:"mailto:info@ideeenvijver.nl"}, "info@ideeenvijver.nl")
+                        m("a", {href:"mailto:info@codefor.nl"}, "info@codefor.nl")
                     ]),
                 ]),
                 m("div", {class: "ui col-4 third logos"},

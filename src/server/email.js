@@ -2,17 +2,21 @@ var path = require('path');
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 var EmailTemplate = require('email-templates').EmailTemplate;
-var fs = require('fs');
 
-var config;
-if (!fs.existsSync(__dirname + '/./config.js')) {
-  console.log('Warning, no config.js present. Falling back to config.default.js');
-  config = require(__dirname + '/./config.default.js');
-} else {
-  config = require(__dirname + '/./config.js');
-}
-
-var transporter = nodemailer.createTransport(smtpTransport(config.email));
+var transporter = nodemailer.createTransport(
+  smtpTransport(
+    {
+      host: process.env.EMAIL_HOST || "localhost",
+      port: process.env.EMAIL_PORT || 25,
+      auth: {
+        user: process.env.EMAIL_USER || "info@ideagarden.local",
+        pass: process.env.EMAIL_PASS || "hushhush"
+      },
+      tls: {"rejectUnauthorized": false},
+      debug: true
+    }
+  )
+);
 
 module.exports = (function(){
   function sendMail(receiver, subject, content, mailtype) {
@@ -35,7 +39,7 @@ module.exports = (function(){
       transporter.sendMail({
         from: {
           name: 'Frederique van Ideeënvijver',
-          address: config.email.auth.user
+          address: process.env.DEFAULT_EMAIL || "info@ideagarden.local"
         },
         to: receiver,
         subject: subject,

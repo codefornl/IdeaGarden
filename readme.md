@@ -1,4 +1,4 @@
-[![Dependency Status](https://david-dm.org/CodeForEindhoven/IdeaGarden.svg?path=src/server)](https://david-dm.org/CodeForEindhoven/IdeaGarden?path=src/server)
+[![Dependency Status](https://david-dm.org/codefornl/IdeaGarden.svg?path=src/server)](https://david-dm.org/codefornl/IdeaGarden?path=src/server)
 
 #IdeaGarden
 
@@ -8,7 +8,7 @@ IdeaGarden requires mongodb.
 
 #Configure
 
-Copy the file src/server/config.default.js to src/server/config.js and alter the settings to fit your needs.
+Make sure to call the scripts with all the ENV vars. Check the Dockerfile for their defaults
 
 #Install
 We use gulp as a build system. gulp can be installed with:

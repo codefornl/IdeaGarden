@@ -1,0 +1,36 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: ideagarden-service
+spec:
+  selector:
+    app: ideagarden
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ideagarden-deployment
+  labels:
+    app: ideagarden
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ideagarden
+  template:
+    metadata:
+      labels:
+        app: ideagarden
+    spec:
+      imagePullSecrets:
+      - name: pipeline-docker-registry
+      containers:
+      - name: ideagarden
+        image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
+        ports:
+        - containerPort: 8080
