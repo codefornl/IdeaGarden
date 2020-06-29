@@ -5,7 +5,9 @@ var db = mongoose.connection;
 
 db.on('error', console.log);
 db.once('open', function () { console.log('connected to database'); });
-mongoose.connect(process.env.DATABASE_URI || "mongodb://localhost/ideagarden", {useNewUrlParser: true});
+connect_uri = process.env.DATABASE_URI || "mongodb://root:example@localhost:27017";
+console.info(connect_uri);
+mongoose.connect(connect_uri, {useNewUrlParser: true}); //, useFindAndModify: false, useCreateIndex: true, useUnifiedTopology: true});
 
 var SchemaOptions = {
     timestamps: true,

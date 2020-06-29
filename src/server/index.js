@@ -1,4 +1,5 @@
 var express = require('express');
+var cors = require('cors')
 var bodyParser = require('body-parser');
 var compress = require('compression');
 var i18next = require('i18next');
@@ -22,6 +23,7 @@ i18next
 routes.setI18next(i18next);
 
 var app = express();
+app.use(cors());
 app.use(middleware.handle(i18next, {
   removeLngFromUrl: false
 }));

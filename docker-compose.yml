@@ -17,6 +17,8 @@ services:
     image: mongo:3-xenial
     networks:
       - ideagarden
+    ports:
+        - "27017:27017"
     volumes:
       - mongodata:/data/db
     environment:
