@@ -22,7 +22,8 @@ var ChallengeSchema = new mongoose.Schema({
     paragraphs: [{
         //how, when, why
         title: String,
-        description: String
+        text: String,
+        sequence: Number
     }],
     contact: {
         type: mongoose.Schema.Types.ObjectId,
@@ -266,7 +267,7 @@ module.exports = (function () {
     }
 
     function getChallenges(callback) {
-        Challenge.find({}).select('title leader').exec(function (err, found) {
+        Challenge.find({}).populate('paragraphs').exec(function (err, found) {
             if (!found || err) return callback({ success: false });
             callback({ success: true, data: found });
         });
